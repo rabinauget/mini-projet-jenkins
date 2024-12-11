@@ -31,7 +31,7 @@ pipeline {
                 }
             }
         }
-        stage ('Test image'){
+        stage ('Test image docker'){
             agent any
             steps {
                 script {
@@ -90,6 +90,9 @@ pipeline {
             }
         }
         stage ('Test stage image'){
+            when {
+                expression { GIT_BRANCH == 'origin/stage' }
+            }
             agent any
             steps {
                 script {
@@ -110,7 +113,6 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        input "Want to deploy on prod?"
                         curl -fsSL https://deb.nodesource.com/setup_16.x | bash
                         apt-get install -y nodejs
                         npm i -g heroku@7.68.0
@@ -123,6 +125,9 @@ pipeline {
             }
         }
         stage ('Test production image'){
+            when {
+                expression { GIT_BRANCH == 'origin/main' }
+            }
             agent any
             steps {
                 script {
