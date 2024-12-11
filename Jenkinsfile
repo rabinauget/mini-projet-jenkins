@@ -24,7 +24,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        docker run --name $IMAGE_NAME -d -p $APP_CONTAINER_PORT:$APP_EXPOSED_PORT -e PORT=$APP_CONTAINER_PORT toshiroskynet/$IMAGE_NAME:$IMAGE_TAG
+                        docker run --name $IMAGE_NAME -d -p $APP_EXPOSED_PORT:$APP_CONTAINER_PORT -e PORT=$APP_CONTAINER_PORT toshiroskynet/$IMAGE_NAME:$IMAGE_TAG
                         sleep 15
                     '''
                 }
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        curl http://172.17.0.1:82 | grep -i 'Dimension'
+                        curl http://172.17.0.1:$APP_EXPOSED_PORT | grep -i 'Dimension'
                     '''
                 }
             }
