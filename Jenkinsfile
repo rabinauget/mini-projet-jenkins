@@ -54,12 +54,12 @@ pipeline {
         stage ('Push to registry'){
             agent any
             environment {
-                DOCKERHUB_API_KEY = credentials('dockerhub')
+                DOCKERHUB_PASSWORD = credentials('dockerhub')
             }
             steps {
                 script {
                     sh '''
-                        docker login -u ${DOCKERHUB_API_KEY_USR} -p ${DOCKERHUB_API_KEY_PSW} https://index.docker.io/v1/
+                        echo $DOCKERHUB_PASSWORD_PSW | docker login -u $ID_DOCKER --passwd-stdin
                         docker push toshiroskynet/$IMAGE_NAME:$IMAGE_TAG
                         sleep 10
                     '''
