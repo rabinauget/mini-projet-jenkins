@@ -87,7 +87,7 @@ pipeline {
                 }
             }
         }
-        stage ('Test image'){
+        stage ('Test stage image'){
             agent any
             steps {
                 script {
@@ -120,7 +120,7 @@ pipeline {
                 }
             }
         }
-        stage ('Test image'){
+        stage ('Test production image'){
             agent any
             steps {
                 script {
