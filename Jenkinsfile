@@ -60,7 +60,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        echo $DOCKERHUB | docker login -u toshiroskynet --passwd-stdin
+                        echo $DOCKERHUB_PSW | docker login -u $DOCKERHUB_USR --password-stdin
                         docker push toshiroskynet/$IMAGE_NAME:$IMAGE_TAG
                         sleep 10
                     '''
