@@ -25,7 +25,7 @@ pipeline {
                 script {
                     sh '''
                         docker run --name $IMAGE_NAME -d -p $APP_EXPOSED_PORT:$APP_CONTAINER_PORT -e PORT=$APP_CONTAINER_PORT toshiroskynet/$IMAGE_NAME:$IMAGE_TAG
-                        sleep 15
+                        sleep 10
                     '''
                 }
             }
@@ -59,6 +59,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        docker login -u ${DOCKERHUB_API_KEY_USR} -p ${DOCKERHUB_API_KEY_PSW} https://index.docker.io/v1/
                         docker push toshiroskynet/$IMAGE_NAME:$IMAGE_TAG
                         sleep 10
                     '''
