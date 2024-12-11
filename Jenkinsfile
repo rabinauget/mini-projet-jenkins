@@ -4,10 +4,10 @@ pipeline {
         IMAGE_TAG = "latest"
         STAGING = "mini-projet-jenkins-staging"
         PRODUCTION = "mini-projet-jenkins-production"
-        APP_CONTAINER_PORT: "5000"
-        APP_EXPOSED_PORT: "82"
-        STAGING_APP: "https://mini-projet-jenkins-staging-e373209396c2.herokuapp.com"
-        PRODUCTION_APP: "https://mini-projet-jenkins-production-2d5d1b05ea59.herokuapp.com"
+        APP_CONTAINER_PORT = "80"
+        APP_EXPOSED_PORT = "82"
+        STAGING_APP =  "https://mini-projet-jenkins-staging-e373209396c2.herokuapp.com"
+        PRODUCTION_APP = "https://mini-projet-jenkins-production-2d5d1b05ea59.herokuapp.com"
     }
     agent none
     stages {
