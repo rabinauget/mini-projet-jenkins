@@ -84,7 +84,7 @@ Aller dans **Tableau de bord => Administrer Jenkins => Credentials => Global => 
 Donc dans un premier temps, il faut aller prendre l'API_KEY sur Heroku:
 
 + Il faut se connecter avec notre compte sur Heroku
-+ Puis aller dans Dashboard => Account => Sur la section API Key, cliquer sur `Reavel`
++ Puis aller dans **Dashboard** => **Account** => **Dans la section API Key**, cliquer sur `Reavel`
 + Copier l'API Key
 + Revenir sur Jenkins faire la même procédure que quand on a créé le credential de dockerhub, mais la différence c'est que le type de crédential n'est pas un nom d'utilisateur et mot de passe mais un `Secret text`:
 
