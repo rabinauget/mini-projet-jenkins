@@ -58,7 +58,7 @@ Voici les technos que j'ai utilisé pour réaliser ce mini-projet:
 
 1. Une fois Jenkins installé et correctement configuré, il faut dans un premier temps installer le plugin `Github Integration` afin que Jenkins puisse recevoir les notifications de push et ainsi, pouvoir enclencher le lancement du pipeline. 
 
-Pour ce faire, aller dans Tableau de bord => Administrer Jenkins => Plugins => Plugins disponibles => Rechercher le plugin => Cocher la case => Installer
+Pour ce faire, aller dans **Tableau de bord** => **Administrer Jenkins** => **Plugins** => **Plugins disponibles** => **Rechercher le plugin** => **Cocher la case** => **Installer**
 
 ![1_1_plugin_github_integration_installation](./capture/1_1_plugin_github_integration_installation.png)
 
@@ -227,7 +227,7 @@ Sur Jenkins,
 
 + il faut installer le plugins `Slack notification`
 + une fois installé, déclarer le token au niveau de Jenkins dans credentials avec comme type `secret text`
-+ ensuite aller dans Tableau de bord => Administrer Jenkins => et dans la section Slack, remplir comme ceci:
++ ensuite aller dans **Tableau de bord** => **Administrer Jenkins** => **dans la section Slack**, remplir comme ceci:
 
 + **Workspace:** le nom de l'espace de travail
 + **Credential:** sélectionner le credential qui vient d'être créer
