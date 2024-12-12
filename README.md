@@ -100,7 +100,7 @@ Donc dans un premier temps, il faut aller prendre l'API_KEY sur Heroku:
 
 4. Les identifiants nécessaires à l'exécution du pipeline étant configurés dans Jenkins, il reste à ajouter un `Webhook` sur le projet GitHub pour notifier automatiquement Jenkins à chaque push.
 
-Pour ce faire, dans le dépôt Github de notre projet, aller dans Settings => Webhook => Add Webhook:
+Pour ce faire, dans le dépôt Github de notre projet, aller dans **Settings** => **Webhook** => **Add Webhook**:
 
 + **Payload URL** : Mettre l'URL de notre Jenkins et ajouter `github-webhook/` à la fin (ne pas oublier le / à la fin) 
 + **Content type** : application/json
