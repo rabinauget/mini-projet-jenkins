@@ -1,6 +1,5 @@
 pipeline {
     environment {
-        ID_DOCKER = "${ID_DOCKERHUB_PARAMS}"
         IMAGE_NAME = "alpinehelloworld-project"
         IMAGE_TAG = "latest"
         STAGING = "mini-projet-jenkins-staging"
