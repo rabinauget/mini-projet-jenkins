@@ -175,7 +175,7 @@ Dans la capture, on voit qu'il a sauté la partie Staging car la branche par dé
 
 # Test de push vers l'environnement de staging
 
-Afin de confirmer que le Webhook fonctionne correctement, je vais faire un test de push vers le staging. Cela devrait déclencher le pipeline pour qu'il deploi vers le staging.
+10. Afin de confirmer que le Webhook fonctionne correctement, je vais faire un test de push vers le staging. Cela devrait déclencher le pipeline pour qu'il deploie vers le staging.
 
 
 
