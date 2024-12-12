@@ -68,12 +68,12 @@ Pour ce faire, aller dans Tableau de bord => Administrer Jenkins => Plugins => P
 
 Aller dans **Tableau de bord => Administrer Jenkins => Credentials => Global => Add Credentials, et remplir les champs comme ceci**:
 
-    + **Type:** Nom d'utilisateur et Mot de passe
-    + **Portée:** Global
-    + **Nom d'utilisateur:** (Nom d'utilisateur du compte Dockerhub)
-    + **Mot de passe:** (Mot de passe du compte Dockerhub)
-    + **ID:** (J'ai mis dockerhub mais on peut mettre ce qu'on veut du moment que ça nous permet de reconnaître que c'est le compte dockerhub)
-    + **Description:** (Une briève description)
++ **Type:** Nom d'utilisateur et Mot de passe
++ **Portée:** Global
++ **Nom d'utilisateur:** (Nom d'utilisateur du compte Dockerhub)
++ **Mot de passe:** (Mot de passe du compte Dockerhub)
++ **ID:** (J'ai mis dockerhub mais on peut mettre ce qu'on veut du moment que ça nous permet de reconnaître que c'est le compte dockerhub)
++ **Description:** (Une briève description)
 
 ![1_2_dockerhub_account.png](./capture/1_2_dockerhub_account.png)
 
@@ -83,16 +83,16 @@ Aller dans **Tableau de bord => Administrer Jenkins => Credentials => Global => 
 
 Donc dans un premier temps, il faut aller prendre l'API_KEY sur Heroku:
 
-    + Il faut se connecter avec notre compte sur Heroku
-    + Puis aller dans Dashboard => Account => Sur la section API Key, cliquer sur `Reavel`
-    + Copier l'API Key
-    + Revenir sur Jenkins faire la même procédure que quand on a créé le credential de dockerhub, mais la différence c'est que le type de crédential n'est pas un nom d'utilisateur et mot de passe mais un `Secret text`:
++ Il faut se connecter avec notre compte sur Heroku
++ Puis aller dans Dashboard => Account => Sur la section API Key, cliquer sur `Reavel`
++ Copier l'API Key
++ Revenir sur Jenkins faire la même procédure que quand on a créé le credential de dockerhub, mais la différence c'est que le type de crédential n'est pas un nom d'utilisateur et mot de passe mais un `Secret text`:
 
-        ++ **Type:** Secret text
-        ++ **Portée:** Global
-        ++ **Secret:** Coller l'API key ici
-        ++ **ID:** Ici, il faut mettre exactement `HEROKU_API_KEY` (En majuscule ou en miniscule)
-        ++ **Description:** (Une briève description)
+++ **Type:** Secret text
+++ **Portée:** Global
+++ **Secret:** Coller l'API key ici
+++ **ID:** Ici, il faut mettre exactement `HEROKU_API_KEY` (En majuscule ou en miniscule)
+++, **Description:** (Une briève description)
 
 ![1_3_heroku_account.png](./capture/1_3_heroku_account.png)
 
@@ -102,12 +102,12 @@ Donc dans un premier temps, il faut aller prendre l'API_KEY sur Heroku:
 
 Pour ce faire, dans le dépôt Github de notre projet, aller dans Settings => Webhook => Add Webhook:
 
-    + **Payload URL** : Mettre l'URL de notre Jenkins et ajouter `github-webhook/` à la fin (ne pas oublier le / à la fin) 
-    + **Content type** : application/json
-    + **Secret** : (Je laisse vide mais ça dépend de votre configuration)
-    + **Enable SSL**: si le certificat SSL est activé sur votre Jenkins
-    + **Which events would you like to trigger this webhook?** : On peut juste cochez `Push event` mais le souci c'est que quand vous faire un merge request et qu'ensuite vous faites un push depuis le local, le pipeline ne sera pas déclencher donc j'ai mis `Let me select individual events` et cocher **Pushes** & **Merge groups**.
-    + **Add webhook**
++ **Payload URL** : Mettre l'URL de notre Jenkins et ajouter `github-webhook/` à la fin (ne pas oublier le / à la fin) 
++ **Content type** : application/json
++ **Secret** : (Je laisse vide mais ça dépend de votre configuration)
++ **Enable SSL**: si le certificat SSL est activé sur votre Jenkins
++ **Which events would you like to trigger this webhook?** : On peut juste cochez `Push event` mais le souci c'est que quand vous faire un merge request et qu'ensuite vous faites un push depuis le local, le pipeline ne sera pas déclencher donc j'ai mis `Let me select individual events` et cocher **Pushes** & **Merge groups**.
++ **Add webhook**
 
 ![1_4_webhook_configuration.png](./capture/1_4_webhook_configuration.png)
 
@@ -129,9 +129,9 @@ Dans **Tableau de bord** => **Nouveau Item** => **Saisir le nom du pipeline** =>
 
 8. On est redirigé vers la page de configuration de notre pipeline qui contient trois sections:
 
-    + Général
-    + Advanced Project Options
-    + Pipeline
++ Général
++ Advanced Project Options
++ Pipeline
 
 Dans la section Générale:
 
@@ -153,9 +153,9 @@ Cocher ensuite `Github hook trigger for GITScm polling` pour dire à notre pipel
 
 Dans la section Pipeline:
 
-    + **Sur Definition** : choisir `Pipeline script from SCM`
-    + **SCM** : Mettre `Git`
-    + **Repository URL** : Coller à nouveau le lien Github du projet
++ **Sur Definition** : choisir `Pipeline script from SCM`
++ **SCM** : Mettre `Git`
++ **Repository URL** : Coller à nouveau le lien Github du projet
 
 ![1_8_4_pipeline_scm_configuration.png](./capture/1_8_4_pipeline_scm_configuration.png)
 
@@ -177,9 +177,22 @@ Dans la capture, on voit qu'il a sauté la partie Staging car la branche par dé
 
 10. Afin de confirmer que le Webhook fonctionne correctement, je vais faire un test de push vers le staging. Cela devrait déclencher le pipeline pour qu'il deploie vers le staging.
 
+![10_git_push_stage.png](./capture/10_git_push_stage.png)
 
+Aussitôt qu'un push vers la branche `stage` a été effectué, le pipeline s'est lancé et on voit bien qu'il a sauté le déploiement vers la prod, conformément aux instructions indiqués dans le fichier Jenkisfile. Je vous mets à disposition le fichier de log d'execution (Deploiement en staging.txt).
 
+![10_pipeline_run_staging.png](./capture/10_pipeline_run_staging.png)
 
+11. On peut voir que l'application a bien été déployé en staging.
 
+![10_test_staging_web.png](./capture/10_test_staging_web.png)
+
+# Test de push vers l'environnement de production
+
+12. Maintenant, je vais faire:
+
++  push vers la branche `stage`
++  faire un merge de la branche `stage` vers la branche `main`
++  et pour terminer, faire un push des modifications vers la branch `main`
 
 
