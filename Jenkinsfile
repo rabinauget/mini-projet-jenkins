@@ -69,7 +69,7 @@ pipeline {
         }
         stage ('Push image in staging and deploy it'){
             when {
-                expression { BRANCH_NAME == 'stage' }
+                expression { GIT_BRANCH == 'origin/stage' }
             }
             agent any
             environment {
@@ -91,7 +91,7 @@ pipeline {
         }
         stage ('Test stage image'){
             when {
-                expression { BRANCH_NAME == 'stage' }
+                expression { GIT_BRANCH == 'origin/stage' }
             }
             agent any
             steps {
@@ -104,7 +104,7 @@ pipeline {
         }
         stage ('Push image in production and deploy it'){
             when {
-                expression { BRANCH_NAME == 'main' }
+                expression { GIT_BRANCH == 'origin/main' }
             }
             agent any
             environment {
@@ -126,7 +126,7 @@ pipeline {
         }
         stage ('Test production image'){
             when {
-                expression { BRANCH_NAME == 'main' }
+                expression { GIT_BRANCH == 'origin/main' }
             }
             agent any
             steps {
