@@ -236,7 +236,7 @@ Sur Jenkins,
 
 ![16_Slack notification](./capture/16_Slack_notification.png)
 
-17. Et une fois le tout configuré, on peut voir que les notifications ont bien été reçu sur Slack
+17. Et une fois le tout configuré, on peut voir que les notifications ont bien été reçu sur Slack.
 
 ![17_Slack_notification_success](./capture/17_Slack_notification_success.png)
 
