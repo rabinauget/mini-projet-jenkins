@@ -60,7 +60,7 @@ Voici les technos que j'ai utilisé pour réaliser ce mini-projet:
 
 Pour ce faire, aller dans Tableau de bord => Administrer Jenkins => Plugins => Plugins disponibles => Rechercher le plugin => Cocher la case => Installer
 
-![1_1_plugin_github_integration_installation.png](../capture/1_1_plugin_github_integration_installation.png)
+![1_1_plugin_github_integration_installation](./capture/1_1_plugin_github_integration_installation.png)
 
 # Connexion de Jenkins à Dockerhub
 
@@ -75,7 +75,7 @@ Aller dans **Tableau de bord => Administrer Jenkins => Credentials => Global => 
 + **ID:** (J'ai mis dockerhub mais on peut mettre ce qu'on veut du moment que ça nous permet de reconnaître que c'est le compte dockerhub)
 + **Description:** (Une briève description)
 
-![1_2_dockerhub_account.png](../capture/1_2_dockerhub_account.png)
+![1_2_dockerhub_account](../capture/1_2_dockerhub_account.png)
 
 # Connexion de Jenkins à Heroku
 
@@ -94,7 +94,7 @@ Donc dans un premier temps, il faut aller prendre l'API_KEY sur Heroku:
 ++ **ID:** Ici, il faut mettre exactement `HEROKU_API_KEY` (En majuscule ou en miniscule)
 ++, **Description:** (Une briève description)
 
-![1_3_heroku_account.png](../capture/1_3_heroku_account.png)
+![1_3_heroku_account](../capture/1_3_heroku_account.png)
 
 # Configuration du Webhook sur Github
 
@@ -109,11 +109,11 @@ Pour ce faire, dans le dépôt Github de notre projet, aller dans Settings => We
 + **Which events would you like to trigger this webhook?** : On peut juste cochez `Push event` mais le souci c'est que quand vous faire un merge request et qu'ensuite vous faites un push depuis le local, le pipeline ne sera pas déclencher donc j'ai mis `Let me select individual events` et cocher **Pushes** & **Merge groups**.
 + **Add webhook**
 
-![1_4_webhook_configuration.png](../capture/1_4_webhook_configuration.png)
+![1_4_webhook_configuration](../capture/1_4_webhook_configuration.png)
 
 5. Le webhook va apparaître comme ceci donc il faut cliquer sur le lien de Jenkins
 
-![1_5_webhook_finish_to_create.png](../capture/1_5_webhook_finish_to_create.png)
+![1_5_webhook_finish_to_create](../capture/1_5_webhook_finish_to_create.png)
 
 6. Après avoir cliqué sur le webhook, rendez-vous dans `Recent Deliveries` pour confirmer que la requête de ping a été effectuée avec succès. Si elle échoue, vérifiez que le plugin `GitHub Integration` est bien  installé dans Jenkins et que l'URL de Jenkins dans le webhook est correctement configurée avec le `/`.
 
