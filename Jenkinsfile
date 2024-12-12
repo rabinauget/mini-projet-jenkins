@@ -62,7 +62,7 @@ pipeline {
                     sh '''
                         echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin
                         docker push toshiroskynet/$IMAGE_NAME:$IMAGE_TAG
-                        sleep 11
+                        sleep 12
                     '''
                 }
             }
