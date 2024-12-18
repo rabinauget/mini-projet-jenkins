@@ -1,4 +1,4 @@
-FROM nginx:alpine3.20-slim
+FROM nginx:stable-bookworm
 LABEL maintainer='rabinauget@gmail.com'
 RUN DEBIAN_FRONTEND=noninteractive apt update && apt install git -y && apt clean -y && rm -Rf /var/lib/apt/lists/*
 RUN git clone https://github.com/diranetafen/static-website-example.git /usr/share/nginx/html/
